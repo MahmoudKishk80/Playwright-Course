@@ -29,14 +29,14 @@ test("user registers, logs in and checks out a Zara product", async ({ page }) =
   await expect(page.getByText("Login Successfully")).toBeHidden({ timeout: 15000 });
   await userObject.waitUntilReady();
 
-  await page.screenshot({ path: path.join(__dirname, "1-after-login.png"), fullPage: true });
+  await page.screenshot({ path: path.join(__dirname, "..", "..", "screenshots", "1-after-login.png"), fullPage: true });
 
   await userObject.addProductToCart("ZARA COAT 3");
 
   await expect(page.getByRole("navigation").getByRole("button", { name: "Cart" }).locator("label")).toHaveText("1");
   await userObject.waitUntilReady();
 
-  await page.screenshot({ path: path.join(__dirname, "2-after-add-to-cart.png"), fullPage: true });
+  await page.screenshot({ path: path.join(__dirname, "..", "..", "screenshots", "2-after-add-to-cart.png"), fullPage: true });
 
   await userObject.openCart();
   await userObject.goToCheckout();
@@ -52,5 +52,5 @@ test("user registers, logs in and checks out a Zara product", async ({ page }) =
 
   await userObject.waitUntilReady();
 
-  await page.screenshot({ path: path.join(__dirname, "3-after-checkout-info.png"), fullPage: true });
+  await page.screenshot({ path: path.join(__dirname, "..", "..", "screenshots", "3-after-checkout-info.png"), fullPage: true });
 });
