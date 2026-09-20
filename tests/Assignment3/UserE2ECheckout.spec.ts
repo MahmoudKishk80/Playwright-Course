@@ -9,11 +9,9 @@ test.use({
 
 const email = faker.internet.email();
 const password = faker.internet.password({ length: 10, prefix: "Kishk@80" });
-const phone = faker.string.numeric(10);
+const phone = faker.string.numeric({ length: 10, allowLeadingZeros: false });
 
 test("user registers, logs in and checks out a Zara product", async ({ page }) => {
-  test.setTimeout(240000);
-
   const userObject = new E2EFlow(page);
 
   await userObject.open();
@@ -50,6 +48,8 @@ test("user registers, logs in and checks out a Zara product", async ({ page }) =
     "rahulshettyacademy"
   );
 
+
+  await userObject.selectCountry("Italy");
   await userObject.waitUntilReady();
 
   await page.screenshot({ path: path.join(__dirname, "..", "..", "screenshots", "3-checkout.png"), fullPage: true });

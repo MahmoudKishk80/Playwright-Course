@@ -29,6 +29,8 @@ export class E2EFlow extends OrderE2EBasePage {
   private readonly cvvField: Locator;
   private readonly nameOnCardField: Locator;
   private readonly couponField: Locator;
+  private readonly countryField: Locator;
+  private readonly countryResults: Locator;
 
   private readonly spinnerOverlay: Locator;
 
@@ -64,6 +66,9 @@ export class E2EFlow extends OrderE2EBasePage {
     this.cvvField = field.filter({ hasText: "CVV Code" }).locator("input");
     this.nameOnCardField = field.filter({ hasText: "Name on Card" }).locator("input");
     this.couponField = field.filter({ hasText: "Apply Coupon" }).locator("input");
+
+    this.countryField = page.getByPlaceholder("Select Country");
+    this.countryResults = page.locator(".ta-results");
 
     this.spinnerOverlay = page.locator(".ngx-spinner-overlay").first();
   }
@@ -110,7 +115,7 @@ export class E2EFlow extends OrderE2EBasePage {
   }
 
   async openLogin(): Promise<void> {
-    await this.page.goto("https://rahulshettyacademy.com/client/#/auth/login");
+    await this.page.goto("https://rahulshettyacademy.com/client/#/auth/login", { waitUntil: "domcontentloaded" });
   }
 
   async login(email: string, password: string): Promise<void> {
@@ -155,5 +160,11 @@ export class E2EFlow extends OrderE2EBasePage {
     await this.nameOnCardField.fill(nameOnCard);
 
     await this.couponField.fill(coupon);
+  }
+
+  async selectCountry(country: string): Promise<void> {
+    await this.countryField.pressSequentially(country);
+
+    await this.countryResults.getByRole("button", { name: country }).click();
   }
 }
