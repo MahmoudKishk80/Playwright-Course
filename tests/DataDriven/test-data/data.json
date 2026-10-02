@@ -1,0 +1,39 @@
+{
+  "logins": [
+    {
+      "email": "Tod_Stamm@hotmail.com",
+      "password": "Kishk@802LL",
+      "validity": "invalid"
+    },
+    {
+      "email": "not-a-user@test.com",
+      "password": "Kishk@802L",
+      "validity": "invalid"
+    },
+    {
+      "email": "",
+      "password": "",
+      "validity": "invalid"
+    },
+    {
+      "email": "Tod_Stamm@hotmail.com",
+      "password": "Kishk@802L",
+      "validity": "valid"
+    }
+  ],
+  "products": [
+    "ADIDAS ORIGINAL",
+    "ZARA COAT 3",
+    "IPHONE 13 PRO"
+  ],
+  "productToOrder": "ZARA COAT 3",
+  "missingProduct": "SAMSUNG GALAXY S26 ULTRA",
+  "payment": {
+    "cardNumber": "4542 9931 9292 2293",
+    "expiryMonth": "01",
+    "expiryYear": "16",
+    "cvv": "808",
+    "nameOnCard": "Mahmoud Kishk",
+    "coupon": "rahulshettyacademy"
+  }
+}
